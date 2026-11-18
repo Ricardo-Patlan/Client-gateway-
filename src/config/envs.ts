@@ -7,6 +7,8 @@ interface EnvVars {
   PRODUCTS_MICROSERVICE_PORT: number;
   ORDERS_MICROSERVICE_HOST: string;
   ORDERS_MICROSERVICE_PORT: number;
+  CATEGORIES_MICROSERVICE_HOST: string;
+  CATEGORIES_MICROSERVICE_PORT: number;
 }
 
 //Validador de esquema
@@ -27,6 +29,8 @@ const envsSchema = joi
       .min(1)
       .max(65535)
       .required(),
+    CATEGORIES_MICROSERVICE_HOST: joi.string().required(),
+    CATEGORIES_MICROSERVICE_PORT: joi.number().integer().min(1).max(65535).required(),
   })
   .unknown(true);
 
@@ -43,4 +47,6 @@ export const envs = {
   productsMicroservicePort: envVars.PRODUCTS_MICROSERVICE_PORT,
   ordersMicroserviceHost: envVars.ORDERS_MICROSERVICE_HOST,
   ordersMicroservicePort: envVars.ORDERS_MICROSERVICE_PORT,
+  categoriesMicroserviceHost: envVars.CATEGORIES_MICROSERVICE_HOST,
+  categoriesMicroservicePort: envVars.CATEGORIES_MICROSERVICE_PORT,
 } as const;
